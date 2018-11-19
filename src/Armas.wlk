@@ -13,7 +13,7 @@ class Revolver {
 	method usarContra(unMafioso) {
 		if (cantidadBalas > 0) {
 			unMafioso.morite()
-			cantidadBalas--
+			cantidadBalas -= 1
 		}
 	}
 	

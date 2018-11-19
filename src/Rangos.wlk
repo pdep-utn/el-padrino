@@ -31,7 +31,8 @@ object subjefe {
 	// Punto E
 	
 	method ataqueEntre(unAtacante, unAtacado) {
-		unAtacante.armaDistinta().usarContra(unAtacado)
+		unAtacante.armaMasAMano().usarContra(unAtacado)
+		unAtacante.rotarArmas()
 	}
 
 	// Punto F
@@ -60,7 +61,7 @@ object soldado {
 	
 	method reorganizar(unMafioso) {
 		if (unMafioso.cantidadArmas() > 5) {
-			unMafioso.ascenderASubjefe()
+			unMafioso.rango(subjefe)
 		}
 	}
 

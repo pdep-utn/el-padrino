@@ -1,8 +1,10 @@
 import Armas.*
+import Rangos.*
 
 class Familia {
 	
-	var miembros = #{}	
+	var miembros = []
+	var traiciones = []	
 	
 	// Punto B
 	
@@ -12,7 +14,7 @@ class Familia {
 	
 	// Punto C
 	
-	method armarAlQueQuiera() {
+	method armasParaTodos() {
 		miembros.forEach { miembro => miembro.agregarArma(new Revolver()) }
 	}
 	
@@ -34,15 +36,11 @@ class Familia {
 	
 	method reorganizarse() {
 		self.reorganizarMiembrosVivos()
-		self.elegirDon()		
+		self.miembroMasLeal().rango(don)
 	}
 	
 	method reorganizarMiembrosVivos() {
 		self.miembrosVivos().forEach { miembro => miembro.reorganizate() }
-	}
-	
-	method elegirDon() {
-		self.miembroMasLeal().ascenderADon()
 	}
 	
 	method miembroMasLeal() {
@@ -52,5 +50,13 @@ class Familia {
 	method miembrosQueSabenDespacharElegantemente() {
 		return self.miembrosVivos().filter { miembro => miembro.sabeDespacharElegantemente() }	
 	}
-	
+	method agregarMiembre(mafioso){
+		miembros.add(mafioso)
+	}	
+	method quitarMiembro(mafioso){
+		miembros.quitar(mafioso)
+	}
+	method agregarTraicion(traicion){
+		traiciones.add(traicion)
+	}
 }

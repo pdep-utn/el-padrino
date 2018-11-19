@@ -1,18 +1,19 @@
 import Rangos.*
 import Familia.*
+import Traiciones.*
 
 class Mafioso {
-
+	const property maximaLealtad = 100
 	var property rango
-	var property familia	
+	//var property familia	
 	
 	var estaMuerto = false
 	var estaHerido = false
 	
-	var lealtad = 100
+	var property lealtad = maximaLealtad
 	
 	var armas = []
-	var subordinados = #{}
+	var subordinados = []
 	
 	// Punto A
 	
@@ -56,12 +57,14 @@ class Mafioso {
 		rango.ataqueEntre(self, unMafioso)		
 	}
 
-	method algunAubordinado() {
+	method algunSubordinado() {
 		return subordinados.anyOne()		
 	}
 
-	method armaDistinta() {
-		return armas.anyOne()
+	method rotarArmas() {
+		var arma = armas.first()
+		armas.remove(arma)
+		armas.add(arma)
 	}
 
 	method armaMasAMano() {
@@ -96,6 +99,10 @@ class Mafioso {
 	method ascenderADon() {
 		rango = don
 	}
+	
+	method iniciarTraicion(familiaActual, nuevaFamilia, fecha, victima){
+		familiaActual.agregarTraicion(new Traicion(traidor = self, familiaActual = familiaActual, nuevaFamilia = nuevaFamilia, fecha = fecha, victimas = [victima]))
+	}
 		
 }
 
@@ -104,7 +111,7 @@ object donVito inherits Mafioso(rango = don) {
 	// Punto E
 	
 	override method atacarA(unMafioso) {
-		2.times { super(unMafioso) }		
+		2.times { x=> super(unMafioso) }		
 	}
 
 	
