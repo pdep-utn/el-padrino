@@ -2,7 +2,7 @@ class Traicion {
 
 	var fecha
 	var traidor
-	var nuevaFamilia
+	var familiaNueva
 	var familiaActual
 	var victimas = []
 
@@ -20,7 +20,7 @@ class Traicion {
 	}
 	
 	method puedeRealizarse() {
-		return nuevaFamilia.promedioLealtad() > traidor.lealtad() * 2
+		return familiaNueva.promedioLealtad() > traidor.lealtad() * 2
 	}
 
 	method concretarse() {
@@ -33,7 +33,7 @@ class Traicion {
 	}
 	
 	method cambiarFamilia() {
-		nuevaFamilia.agregarMiembro(traidor) 
+		familiaNueva.agregarMiembro(traidor) 
 		familiaActual.quitarMiembro(traidor)
 		traidor.lealtad(traidor.maximoLealtad())
 	}

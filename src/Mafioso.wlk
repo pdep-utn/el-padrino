@@ -5,7 +5,6 @@ import Traiciones.*
 class Mafioso {
 	const property maximaLealtad = 100
 	var property rango
-	//var property familia	
 	
 	var estaMuerto = false
 	var estaHerido = false
@@ -61,10 +60,11 @@ class Mafioso {
 		return subordinados.anyOne()		
 	}
 
-	method rotarArmas() {
-		var arma = armas.first()
+	method armaMenosUsada() {
+		const arma = armas.first()
 		armas.remove(arma)
 		armas.add(arma)
+		return arma
 	}
 
 	method armaMasAMano() {
@@ -83,6 +83,8 @@ class Mafioso {
 		}
 	}
 	
+	// Punto F
+	
 	method reorganizate() {
 		rango.reorganizar(self)
 		self.aumentarLealtad()
@@ -100,8 +102,15 @@ class Mafioso {
 		rango = don
 	}
 	
-	method iniciarTraicion(familiaActual, nuevaFamilia, fecha, victima){
-		familiaActual.agregarTraicion(new Traicion(traidor = self, familiaActual = familiaActual, nuevaFamilia = nuevaFamilia, fecha = fecha, victimas = [victima]))
+	method iniciarTraicion(_familiaActual, _familiaNueva, _fecha, _victima) {
+		const traicion = new Traicion(
+			traidor = self, 
+			familiaActual = _familiaActual, 
+			familiaNueva = _familiaNueva, 
+			fecha = _fecha, 
+			victimas = [_victima]
+		)
+		familiaActual.agregarTraicion(traicion)
 	}
 		
 }
@@ -111,7 +120,7 @@ object donVito inherits Mafioso(rango = don) {
 	// Punto E
 	
 	override method atacarA(unMafioso) {
-		2.times { x=> super(unMafioso) }		
+		2.times { super(unMafioso) }		
 	}
 
 	

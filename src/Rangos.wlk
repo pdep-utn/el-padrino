@@ -31,8 +31,7 @@ object subjefe {
 	// Punto E
 	
 	method ataqueEntre(unAtacante, unAtacado) {
-		unAtacante.armaMasAMano().usarContra(unAtacado)
-		unAtacante.rotarArmas()
+		unAtacante.armaMenosUsada().usarContra(unAtacado)
 	}
 
 	// Punto F

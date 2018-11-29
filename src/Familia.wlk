@@ -36,7 +36,11 @@ class Familia {
 	
 	method reorganizarse() {
 		self.reorganizarMiembrosVivos()
-		self.miembroMasLeal().rango(don)
+		self.elegirDon()
+	}
+	
+	method elegirDon() {
+		self.miembroMasLeal().ascenderADon()		
 	}
 	
 	method reorganizarMiembrosVivos() {
@@ -50,12 +54,15 @@ class Familia {
 	method miembrosQueSabenDespacharElegantemente() {
 		return self.miembrosVivos().filter { miembro => miembro.sabeDespacharElegantemente() }	
 	}
-	method agregarMiembre(mafioso){
+	
+	method agregarMiembro(mafioso){
 		miembros.add(mafioso)
-	}	
+	}
+		
 	method quitarMiembro(mafioso){
 		miembros.quitar(mafioso)
 	}
+	
 	method agregarTraicion(traicion){
 		traiciones.add(traicion)
 	}
